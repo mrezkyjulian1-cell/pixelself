@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  body {
+    background-color: #080811;
+    color: #e2e8f0;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Pixel Card Borders & Retro Styling */
+.pixel-box {
+  background: #111126;
+  border: 4px solid #3b3b6d;
+  box-shadow: 0 0 0 2px #000, 4px 4px 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.pixel-box-gold {
+  background: #141226;
+  border: 4px solid #facc15;
+  box-shadow: 0 0 0 2px #713f12, 0 0 15px rgba(250, 204, 21, 0.25), 4px 4px 0 2px #000;
+}
+
+.pixel-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  padding: 10px 16px;
+  background: #1e1b4b;
+  color: #fff;
+  border: 3px solid #6366f1;
+  box-shadow: 3px 3px 0px #000;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pixel-btn:hover {
+  background: #312e81;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #000;
+  border-color: #a5b4fc;
+}
+
+.pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000;
+}
+
+.pixel-btn-gold {
+  background: #854d0e;
+  border-color: #facc15;
+  color: #fef08a;
+}
+.pixel-btn-gold:hover {
+  background: #a16207;
+  border-color: #fef08a;
+}
+
+/* CRT Scanline Effect */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.28) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+}
+
+.crt-vignette {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+}
+
+/* Pixel Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090914;
+  border: 1px solid #1e1e38;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4338ca;
+  border: 2px solid #090914;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* Pixel Animations */
+@keyframes shakeAnimation {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4px, 4px); }
+  40% { transform: translate(4px, -4px); }
+  60% { transform: translate(-4px, -4px); }
+  80% { transform: translate(4px, 4px); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake-screen {
+  animation: shakeAnimation 0.4s ease-in-out;
+}
+
+/* React Bits Pixel Transition helper styling */
+.pixelated-image-card {
+  user-select: none;
+  position: relative;
+}
+
+.pixelated-image-card__pixel {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
